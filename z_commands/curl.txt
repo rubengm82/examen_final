@@ -1,0 +1,2 @@
+curl -s http://127.0.0.1:8000/api/cars | python3 -m json.tool
+curl -s http://127.0.0.1:8000/api/cars | jq
