@@ -19,7 +19,7 @@ class CarsSeeder extends Seeder
                 'year' => 2022,
                 'color' => 'Rojo',
                 'license_plate' => '1234ABC',
-                'user_id' => $user->id,
+                'user_id' => 1,
             ],
             [
                 'brand' => 'Honda',
@@ -27,7 +27,7 @@ class CarsSeeder extends Seeder
                 'year' => 2021,
                 'color' => 'Azul',
                 'license_plate' => '5678DEF',
-                'user_id' => $user->id,
+                'user_id' => 2,
             ],
             [
                 'brand' => 'Ford',
@@ -35,7 +35,7 @@ class CarsSeeder extends Seeder
                 'year' => 2020,
                 'color' => 'Blanco',
                 'license_plate' => '9012GHI',
-                'user_id' => $user->id,
+                'user_id' => 3,
             ],
         ];
 

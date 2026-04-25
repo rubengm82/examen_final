@@ -11,25 +11,25 @@ class UsersSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Admin',
-                'last_name' => 'Sistema',
-                'age' => 30,
-                'email' => 'admin@email.com',
-                'password' => 'admin123',
+                'name' => 'Ruben',
+                'last_name' => 'Gallardo',
+                'age' => 44,
+                'email' => 'ruben@email.com',
+                'password' => '1234',
             ],
             [
                 'name' => 'Juan',
                 'last_name' => 'García',
                 'age' => 25,
-                'email' => 'user@email.com',
-                'password' => 'user123',
+                'email' => 'juan@email.com',
+                'password' => '1234',
             ],
             [
                 'name' => 'Maria',
                 'last_name' => 'López',
                 'age' => 28,
                 'email' => 'maria@email.com',
-                'password' => 'password',
+                'password' => '1234',
             ],
         ];
 

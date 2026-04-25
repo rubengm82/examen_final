@@ -1,4 +1,4 @@
-let div_fetch = document.getElementById('div_fetch');
+let table_cars = document.getElementById('table_cars');
 
 fetch('http://127.0.0.1:8000/api/cars', {
     method: 'GET',
@@ -7,11 +7,25 @@ fetch('http://127.0.0.1:8000/api/cars', {
 .then(data => {
     console.log(data);
     // console.log(data[0].user.name);
-    
-    div_fetch.innerHTML = data[0].user.name;
+    // div_fetch.innerHTML = data[0].user.name;
+
+    table_cars.innerHTML += 
+    `
+    <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Propietario</th>
+    </tr>
+    `
 
     data.forEach(coche => {
-        div_fetch.innerHTML = coche.user.name;
+        table_cars.innerHTML += 
+        `
+        <tr>
+            <td></td>
+        </tr>
+            
+        `;
     });
 
     // (data.ok) ? mensajes_p.style.color = 'green' : mensajes_p.style.color = 'red';
