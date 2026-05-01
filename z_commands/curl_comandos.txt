@@ -1,0 +1,29 @@
+GET
+curl -s http://127.0.0.1:8000/api/cars | python3 -m json.tool
+curl -s http://127.0.0.1:8000/api/cars | jq
+
+
+STORE(POST)
+curl -X POST http://127.0.0.1:8000/api/cars \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "color": "Rojo",
+    "license_plate": "0000ZZZ",
+    "user_id": 1
+  }' -i
+
+
+UPDATE(PUT)
+curl -X PUT http://127.0.0.1:8000/api/cars/2 \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"license_plate": "XYZ-123"}' -i
+
+
+DELETE
+curl -X DELETE http://127.0.0.1:8000/api/cars/1 \
+  -H "Accept: application/json" -i

@@ -15,17 +15,8 @@ class CarController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        $validated = $request->validate([
-            'brand' => 'required|string|max:255',
-            'model' => 'required|string|max:255',
-            'year' => 'required|integer|min:1900|max:2030',
-            'color' => 'required|string|max:50',
-            'license_plate' => 'required|string|unique:cars,license_plate|max:10',
-            'user_id' => 'required|exists:users,id',
-        ]);
-
-        $car = Car::create($validated);
-        return response()->json($car->load('user'), 201);
+        $car = Car::create($request->all());
+        return response()->json($car->load('user'));
     }
 
     public function show(int $id): JsonResponse
@@ -37,17 +28,7 @@ class CarController extends Controller
     public function update(Request $request, int $id): JsonResponse
     {
         $car = Car::findOrFail($id);
-
-        $validated = $request->validate([
-            'brand' => 'sometimes|string|max:255',
-            'model' => 'sometimes|string|max:255',
-            'year' => 'sometimes|integer|min:1900|max:2030',
-            'color' => 'sometimes|string|max:50',
-            'license_plate' => 'sometimes|string|unique:cars,license_plate,' . $id . '|max:10',
-            'user_id' => 'sometimes|exists:users,id',
-        ]);
-
-        $car->update($validated);
+        $car->update($request->all());
         return response()->json($car->load('user'));
     }
 
