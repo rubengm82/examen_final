@@ -12,8 +12,8 @@ fetch('http://127.0.0.1:8000/api/cars', {
 
 
     // ///// CARDS GRID /////
-    let container = document.getElementById('container')
-    container.classList.add('grid');
+    let cards = document.getElementById('cards')
+    cards.classList.add('grid');
     
     data.forEach((coche, index) => {
         let card = document.createElement('div');
@@ -24,7 +24,7 @@ fetch('http://127.0.0.1:8000/api/cars', {
             <p>COCHE: ${coche.brand} ${coche.model} ${coche.year}</p>
             <p>USUARIO: ${coche.user.name} ${coche.user.last_name} <i>(${coche.user.email})</i></p>
         `;
-        container.appendChild(card);
+        cards.appendChild(card);
     });
 
 
