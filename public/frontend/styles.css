@@ -37,6 +37,7 @@
 }
 
 .card p {
+    text-align: center;
     margin: 8px 0;
     font-size: clamp(.85rem, 1vw, 1.5rem);
 }
