@@ -3,14 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\Car;
-use App\Models\User;
+// use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class CarsSeeder extends Seeder
 {
     public function run(): void
     {
-        $user = User::first();
+        // $user = User::first();
 
         $cars = [
             [

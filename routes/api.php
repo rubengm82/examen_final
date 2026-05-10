@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\RemolqueController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('cors')->group(function () {
@@ -16,4 +17,10 @@ Route::middleware('cors')->group(function () {
     Route::post('/cars', [CarController::class, 'store']);
     Route::put('/cars/{id}', [CarController::class, 'update']);
     Route::delete('/cars/{id}', [CarController::class, 'destroy']);
+    
+    Route::get('/remolques', [RemolqueController::class, 'index']);
+    Route::get('/remolques/{id}', [RemolqueController::class, 'show']);
+    Route::post('/remolques', [RemolqueController::class, 'store']);
+    Route::put('/remolques/{id}', [RemolqueController::class, 'update']);
+    Route::delete('/remolques/{id}', [RemolqueController::class, 'destroy']);
 });
