@@ -3,15 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Car;
-// use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class CarsSeeder extends Seeder
 {
     public function run(): void
     {
-        // $user = User::first();
-
         $cars = [
             [
                 'brand' => 'Toyota',
@@ -20,6 +17,7 @@ class CarsSeeder extends Seeder
                 'color' => 'Rojo',
                 'license_plate' => '1234ABC',
                 'user_id' => 1,
+                'remolque_id' => 1,
             ],
             [
                 'brand' => 'Honda',
@@ -28,6 +26,7 @@ class CarsSeeder extends Seeder
                 'color' => 'Azul',
                 'license_plate' => '5678DEF',
                 'user_id' => 2,
+                'remolque_id' => 2,
             ],
             [
                 'brand' => 'Ford',
@@ -36,6 +35,7 @@ class CarsSeeder extends Seeder
                 'color' => 'Blanco',
                 'license_plate' => '9012GHI',
                 'user_id' => 3,
+                'remolque_id' => 3,
             ],
         ];
 

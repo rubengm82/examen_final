@@ -10,13 +10,13 @@ class CarController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(Car::with('user')->get());
+        return response()->json(Car::with('user', 'remolque')->get());
     }
 
     public function store(Request $request): JsonResponse
     {
         $car = Car::create($request->all());
-        return response()->json($car->load('user'));
+        return response()->json($car->load('user', 'remolque'));
     }
 
     public function show(int $id): JsonResponse
@@ -29,7 +29,7 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
         $car->update($request->all());
-        return response()->json($car->load('user'));
+        return response()->json($car->load('user', 'remolque'));
     }
 
     public function destroy(int $id): JsonResponse

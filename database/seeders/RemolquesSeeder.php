@@ -17,17 +17,14 @@ class RemolquesSeeder extends Seeder
             [
                 'model' => 'Remolque-01',
                 'kilograms' => 11,
-                'car_id' => 1,
             ],
             [
-                'model' => 'Remolque-01',
+                'model' => 'Remolque-02',
                 'kilograms' => 22,
-                'car_id' => 2,
             ],
             [
-                'model' => 'Remolque-01',
+                'model' => 'Remolque-03',
                 'kilograms' => 33,
-                'car_id' => 3,
             ],
         ];
         

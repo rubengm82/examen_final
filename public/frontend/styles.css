@@ -19,6 +19,18 @@
     background-color: brown;
     color: white;
     padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-items: center;
+    text-align: center;
+}
+
+.x {
+    padding: 8px;
+    border: 1px solid black;
+    display: inline-block;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
 }
 
 .sidebar {
@@ -31,6 +43,19 @@
     grid-area: cards;
     background-color: chocolate;
     padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: 250px;
+    gap: 20px;
+}
+
+.card {
+    background-color: red;
+    color: white;
+    height: 250px;
+    display: grid;
+    place-items: center;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3);
 }
 
 .footer {
@@ -38,8 +63,4 @@
     background-color: darkolivegreen;
     color: white;
     padding: 8px;
-}
-
-.card {
-    
 }

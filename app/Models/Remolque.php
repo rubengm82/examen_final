@@ -12,11 +12,6 @@ class Remolque extends Model
     protected $fillable = [
         'model',
         'kilograms',
-        'car_id',
     ];
 
-    public function car(): BelongsTo
-    {
-        return $this->belongsTo(Car::class);
-    }
 }

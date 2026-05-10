@@ -16,7 +16,6 @@ return new class extends Migration
 
             $table->string('model', 255)->nullable();
             $table->integer('kilograms')->nullable();
-            $table->foreignId('car_id')->nullable()->constrained('cars')->onDelete('cascade');
 
             $table->timestamps();
         });
