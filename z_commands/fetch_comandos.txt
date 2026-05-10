@@ -1,0 +1,259 @@
+fetch comandos:
+
+
+******* GET ********
+fetch('http://127.0.0.1:8000/api/cars', {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json'
+    }
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error(error);
+});
+
+
+
+******* POST ********
+fetch('http://127.0.0.1:8000/api/cars', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+        brand: 'Toyota',
+        model: 'Corolla',
+        year: 2022,
+        color: 'Rojo',
+        license_plate: '0000ZZZ',
+        user_id: 1
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error(error);
+});
+
+
+
+******* PUT ********
+fetch('http://127.0.0.1:8000/api/cars/2', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+        license_plate: 'XYZ-123'
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error(error);
+});
+
+
+
+******* DELETE ********
+fetch('http://127.0.0.1:8000/api/cars/1', {
+    method: 'DELETE',
+    headers: {
+        'Accept': 'application/json'
+    }
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error(error);
+});
+
+
+
+
+
+***** EJEMPLO CON ADDEVENTLISTER: *********
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody id="carsTable">
+        <!-- Aquí se insertan los coches dinámicamente -->
+    </tbody>
+</table>
+
+
+// 1. Cargar coches
+fetch('http://127.0.0.1:8000/api/cars')
+    .then(response => response.json())
+    .then(cars => {
+
+        const table = document.getElementById('carsTable');
+
+        cars.forEach(car => {
+
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${car.brand}</td>
+                <td>${car.model}</td>
+                <td>${car.year}</td>
+                <td>
+                    <button class="delete-btn" data-id="${car.id}">
+                        Borrar
+                    </button>
+                </td>
+            `;
+
+            table.appendChild(row);
+        });
+    });
+
+
+// 2. Evento para borrar (event delegation)
+document.addEventListener('click', function (e) {
+
+    if (e.target.classList.contains('delete-btn')) {
+
+        const carId = e.target.dataset.id;
+
+        fetch(`http://127.0.0.1:8000/api/cars/${carId}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Coche eliminado:', data);
+
+            // eliminar fila del DOM
+            e.target.closest('tr').remove();
+        })
+        .catch(error => {
+            console.error('Error al borrar:', error);
+        });
+    }
+
+});
+
+
+
+
+
+
+
+***** EJEMPLO CON LARAVEL CRUD: *********
+<table border="1">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody id="carsTable"></tbody>
+</table>
+
+<hr>
+
+<h3>Editar coche</h3>
+
+<input type="hidden" id="carId">
+
+<input type="text" id="brand" placeholder="Marca">
+<input type="text" id="model" placeholder="Modelo">
+<input type="number" id="year" placeholder="Año">
+
+<button id="updateCarBtn">Actualizar</button>
+
+
+--- CARGAR LOS COCHES ----
+fetch('http://127.0.0.1:8000/api/cars')
+    .then(res => res.json())
+    .then(cars => {
+
+        const table = document.getElementById('carsTable');
+
+        cars.forEach(car => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${car.brand}</td>
+                <td>${car.model}</td>
+                <td>${car.year}</td>
+                <td>
+                    <button class="edit-btn"
+                        data-id="${car.id}"
+                        data-brand="${car.brand}"
+                        data-model="${car.model}"
+                        data-year="${car.year}">
+                        Editar
+                    </button>
+                </td>
+            `;
+
+            table.appendChild(row);
+        });
+    });
+    
+--- EDITAR LOS COCHES ---
+document.addEventListener('click', function (e) {
+
+    if (e.target.classList.contains('edit-btn')) {
+
+        document.getElementById('carId').value = e.target.dataset.id;
+        document.getElementById('brand').value = e.target.dataset.brand;
+        document.getElementById('model').value = e.target.dataset.model;
+        document.getElementById('year').value = e.target.dataset.year;
+    }
+});
+
+--- BOTON ACTUALIZAR COCHES ---
+document.getElementById('updateCarBtn').addEventListener('click', function () {
+
+    const id = document.getElementById('carId').value;
+
+    fetch(`http://127.0.0.1:8000/api/cars/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            brand: document.getElementById('brand').value,
+            model: document.getElementById('model').value,
+            year: document.getElementById('year').value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log('Actualizado:', data);
+
+        // opcional: recargar página o tabla
+        location.reload();
+    })
+    .catch(err => console.error(err));
+});
+
