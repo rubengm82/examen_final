@@ -13,11 +13,27 @@ class UserController extends Controller
         return response()->json(User::all());
     }
 
+    public function login(Request $request): JsonResponse
+    {
+        $user = User::where('email', $request->email)
+                    ->where('password', $request->password)
+                    ->first();
+        
+        if (!$user) {
+            return response()->json(['error' => 'Credenciales inválidas'], 401);
+        }
+        
+        return response()->json([
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $user->role
+        ]);
+    }
+
     public function store(Request $request): JsonResponse
     {
         $user = User::create($request->all());
-        $user->password = bcrypt($user->password);
-        $user->save();
         return response()->json($user);
     }
 
@@ -31,10 +47,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-        if ($user->password) {
-            $user->password = bcrypt($user->password);
-            $user->save();
-        }
         return response()->json($user);
     }
 
