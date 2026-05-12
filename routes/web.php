@@ -8,7 +8,7 @@ Route::get('/', function () {
 
 Route::get('/dash', function () {
     return view('frontend.dash');
-})->name('dash');
+})->name('dash')->middleware('role:admin');
 
 Route::get('/login', function () {
     return view('frontend.login');

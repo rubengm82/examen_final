@@ -16,6 +16,7 @@ class UsersSeeder extends Seeder
                 'age' => 44,
                 'email' => 'ruben@email.com',
                 'password' => '1234',
+                'role' => 'admin',
             ],
             [
                 'name' => 'Juan',
@@ -23,6 +24,7 @@ class UsersSeeder extends Seeder
                 'age' => 25,
                 'email' => 'juan@email.com',
                 'password' => '1234',
+                'role' => 'test',
             ],
             [
                 'name' => 'Maria',
@@ -30,6 +32,7 @@ class UsersSeeder extends Seeder
                 'age' => 28,
                 'email' => 'maria@email.com',
                 'password' => '1234',
+                'role' => 'admin',
             ],
         ];
 

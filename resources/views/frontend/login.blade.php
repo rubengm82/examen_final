@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="{{ asset('frontend/styles.css') }}">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Iniciar Sesión</h2>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button onclick="login()">Entrar</button>
-        <p id="error" style="color: red; display: none;"></p>
+    <div class="login-wrapper">
+        <div class="login-box">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="login()">Entrar</button>
+            <p id="error" style="color: red; display: none;"></p>
+        </div>
     </div>
 
     <script>
@@ -36,7 +38,7 @@
                     errorEl.style.display = 'block';
                 } else {
                     localStorage.setItem('user', JSON.stringify(data));
-                    window.location.href = '/dash';
+                    window.location.href = '/dash?user_id=' + data.id;
                 }
             })
             .catch(err => {

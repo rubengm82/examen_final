@@ -3,23 +3,18 @@ const API_URL = '/api';
 document.addEventListener('DOMContentLoaded', () => {
     const user = JSON.parse(localStorage.getItem('user'));
     
-    if (!user) {
-        window.location.href = '/login';
-        return;
+    if (user) {
+        document.getElementById('user-name').textContent = user.name;
+        document.getElementById('user-role').textContent = user.role;
+        document.getElementById('user-info').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'inline';
+        
+        loadCars();
     }
-    
-    document.getElementById('user-name').textContent = user.name;
-    document.getElementById('user-role').textContent = user.role;
-    document.getElementById('user-info').style.display = 'inline';
-    document.getElementById('logout-btn').style.display = 'inline';
-    
-    loadCars();
 });
 
 function loadCars() {
-    fetch(`${API_URL}/cars`, {
-        method: 'GET',
-    })
+    fetch(`${API_URL}/cars`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
