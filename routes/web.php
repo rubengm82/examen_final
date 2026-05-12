@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Models\User;
 
 
@@ -12,6 +13,7 @@ Route::get('/', function () {
     return view('examen');
 })->name('home');
 
+/* LOGIN Y LOGOUT */
 Route::get('/login', function () {
     if (session('user_id')) {
         return redirect('/dash');
@@ -20,12 +22,17 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
+
+/* ROUTES DE LA APP VISIBLE SIN API */
 Route::get('/dash', function () {
     $user = User::find(session('user_id'));
     return view('examen.dash', ['user' => $user]);
 })->name('dash');
-// ->middleware('role:admin'); se pone al final por ejemplo de la linea de arriba
-//    asi no entra nadie que no sea admin
 
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/products/create', function () {
+    return view('examen.products.create');
+})->name('products.create');
+
+Route::post('/api/products', [ProductController::class, 'store']);

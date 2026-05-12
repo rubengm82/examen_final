@@ -15,9 +15,11 @@
                 <a href="/logout"><button class="logout-btn">Salir</button></a>
             </div>
         </div>
-        <div class="sidebar">SIDEBAR</div>
+        <div class="sidebar">
+            <a href="/products/create"><button>Crear nuevo producto</button></a>
+        </div>
         
-        <div class="cards"></div>
+        <div class="content"></div>
 
         {{-- Asi solo lo veria role admin, mira de poner el js dentro del if --}}
         {{-- @if($user->role === 'admin')
