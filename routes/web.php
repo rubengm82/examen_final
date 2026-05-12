@@ -34,3 +34,11 @@ Route::get('/dash', function () {
 Route::get('/products/create', function () {
     return view('examen.products.create');
 })->name('products.create');
+
+Route::get('/products/edit/{id}', function ($id) {
+    return view('examen.products.edit', ['productId' => $id]);
+})->name('products.edit');
+
+Route::get('/products/delete', function () {
+    return view('examen.products.delete');
+})->name('products.delete');

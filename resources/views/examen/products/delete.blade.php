@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Producto</title>
+    <title>Borrar Producto</title>
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -16,18 +16,17 @@
         </div>
 
         <div class="form-container">
-            <h2>Crear Nuevo Producto</h2>
-            <form id="form-product">
-                <input type="text" name="brand" placeholder="Marca" required>
-                <input type="text" name="model" placeholder="Modelo" required>
-                <br>
-                <button type="submit">Crear</button>
+            <h2>Borrar Producto</h2>
+            <form id="form-delete">
+                <input type="number" id="product-id" placeholder="ID del producto" min="1" required>
+                <br><br>
+                <button type="submit" class="delete-btn">Borrar</button>
                 <a href="/dash"><button type="button">Cancelar</button></a>
             </form>
         </div>
 
         <div class="footer">FOOTER</div>
     </div>
-    @vite('resources/js/app_examen_create.js')
+    @vite('resources/js/app_examen_delete.js')
 </body>
 </html>

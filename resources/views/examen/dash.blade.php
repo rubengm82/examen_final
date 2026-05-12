@@ -17,6 +17,8 @@
         </div>
         <div class="sidebar">
             <a href="/products/create"><button>Crear nuevo producto</button></a>
+            <a href="/products/edit/1"><button>Editar producto</button></a>
+            <a href="/products/delete"><button>Borrar producto</button></a>
         </div>
         
         <div class="content"></div>
