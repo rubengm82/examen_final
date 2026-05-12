@@ -19,16 +19,17 @@
     background-color: brown;
     color: white;
     padding: 8px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    justify-content: space-between;
     text-align: center;
 }
 
 .header-right {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
     gap: 15px;
+    align-items: center;
 }
 
 .logout-btn {
