@@ -17,7 +17,7 @@
                 <button type="submit">Entrar</button>
             </form>
             @if(session('error'))
-                <p style="color: red;">{{ session('error') }}</p>
+                <p class="login-error">{{ session('error') }}</p>
             @endif
         </div>
     </div>

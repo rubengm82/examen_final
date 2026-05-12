@@ -58,3 +58,8 @@
 .login-box a {
     text-decoration: none;
 }
+
+.login-error {
+    color: red;
+    margin-top: 1rem;
+}

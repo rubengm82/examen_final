@@ -24,6 +24,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/dash', function () {
     $user = User::find(session('user_id'));
     return view('examen.dash', ['user' => $user]);
-})->name('dash')->middleware('role:admin');
+})->name('dash');
+// ->middleware('role:admin'); se pone al final por ejemplo de la linea de arriba
+//    asi no entra nadie que no sea admin
 
 Route::get('/logout', [LoginController::class, 'logout']);
