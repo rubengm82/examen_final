@@ -26,6 +26,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 
 /* ROUTES DE LA APP VISIBLE SIN API */
+// Si quiero mantener siempre el user en cada pagina he de pasarlo como en /dash con find y el array
 Route::get('/dash', function () {
     $user = User::find(session('user_id'));
     return view('examen.dash', ['user' => $user]);
