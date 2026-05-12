@@ -20,6 +20,7 @@
             <form id="form-product">
                 <input type="text" name="brand" placeholder="Marca" required>
                 <input type="text" name="model" placeholder="Modelo" required>
+                <input type="number" name="user_id" placeholder="User ID" min="1" required>
                 <br>
                 <button type="submit">Crear</button>
                 <a href="/dash"><button type="button">Cancelar</button></a>

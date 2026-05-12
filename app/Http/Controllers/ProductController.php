@@ -15,9 +15,7 @@ class ProductController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        $data = $request->all();
-        $data['user_id'] = session('user_id');
-        $product = Product::create($data);
+        $product = Product::create($request->all());
         return response()->json($product->load('user'));
     }
 

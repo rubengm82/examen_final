@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // const data = Object.fromEntries(formData.entries());
         
         // Crea el data del form campo a campo
+        const user_id = document.querySelector('input[name="user_id"]').value;
         const brand = document.querySelector('input[name="brand"]').value;
         const model = document.querySelector('input[name="model"]').value;
-        const data = { brand, model };
+        const data = { brand, model, user_id };
 
         fetch('/api/products', {
             method: 'POST',
