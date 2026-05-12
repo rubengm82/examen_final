@@ -1,7 +1,5 @@
-const API_URL = '/api';
-
 document.addEventListener('DOMContentLoaded', () => {
-    fetch(`${API_URL}/me`)
+    fetch('/api/me')
     .then(r => r.json())
     .then(data => {
         if (data.error) {
@@ -19,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadCars() {
-    fetch(`${API_URL}/cars`)
+    fetch('/api/cars')
     .then(response => response.json())
     .then(data => {
         console.log(data);
