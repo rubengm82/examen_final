@@ -1,16 +1,21 @@
 const API_URL = '/api';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    
-    if (user) {
-        document.getElementById('user-name').textContent = user.name;
-        document.getElementById('user-role').textContent = user.role;
-        document.getElementById('user-info').style.display = 'inline';
-        document.getElementById('logout-btn').style.display = 'inline';
+    fetch(`${API_URL}/me`)
+    .then(r => r.json())
+    .then(data => {
+        if (data.error) {
+            window.location.href = '/login';
+            return;
+        }
         
+        document.getElementById('user-name').textContent = data.name;
+        document.getElementById('user-role').textContent = data.role;
         loadCars();
-    }
+    })
+    .catch(() => {
+        window.location.href = '/login';
+    });
 });
 
 function loadCars() {
@@ -18,7 +23,6 @@ function loadCars() {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-
         let container_cards = document.getElementsByClassName('cards')[0];
         
         data.forEach(car => {
@@ -31,9 +35,4 @@ function loadCars() {
     .catch(err => {
         console.log(`ERROR: ${err}`);
     });
-}
-
-function logout() {
-    localStorage.removeItem('user');
-    window.location.href = '/login';
 }

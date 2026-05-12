@@ -10,51 +10,16 @@
     <div class="login-wrapper">
         <div class="login-box">
             <h2>Iniciar Sesión</h2>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button onclick="login()">Entrar</button>
-            <p id="error" style="color: red; display: none;"></p>
+            <form action="/login" method="POST">
+                @csrf
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Entrar</button>
+            </form>
+            @if(session('error'))
+                <p style="color: red;">{{ session('error') }}</p>
+            @endif
         </div>
     </div>
-
-    <script>
-        const API_URL = '/api';
-
-        // Si ya está logeado, redirigir a dash
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            window.location.href = '/dash?user_id=' + user.id;
-        }
-
-        function login() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorEl = document.getElementById('error');
-            errorEl.style.display = 'none';
-
-            fetch(`${API_URL}/login`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ email, password })
-            })
-            .then(r => r.json())
-            .then(data => {
-                if (data.error) {
-                    errorEl.textContent = data.error;
-                    errorEl.style.display = 'block';
-                } else if (data.role !== 'admin') {
-                    errorEl.textContent = 'No tienes permisos para acceder';
-                    errorEl.style.display = 'block';
-                } else {
-                    localStorage.setItem('user', JSON.stringify(data));
-                    window.location.href = '/dash?user_id=' + data.id;
-                }
-            })
-            .catch(err => {
-                errorEl.textContent = 'Error de conexión';
-                errorEl.style.display = 'block';
-            });
-        }
-    </script>
 </body>
 </html>

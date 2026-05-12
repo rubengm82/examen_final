@@ -10,8 +10,7 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        // Prioridad: query param > header > session
-        $userId = $request->query('user_id') ?? $request->header('X-User-Id');
+        $userId = session('user_id');
         
         if (!$userId) {
             if ($request->expectsJson()) {
