@@ -4,19 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('cors')->group(function () {
-    Route::get('/me', function () {
-        $userId = session('user_id');
-        if (!$userId) {
-            return response()->json(['error' => 'No autenticado'], 401);
-        }
-        $user = \App\Models\User::find($userId);
-        if (!$user) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
-        }
-        return response()->json($user);
-    });
-
+Route::middleware(['web', 'cors'])->group(function () {
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::post('/users', [UserController::class, 'store']);

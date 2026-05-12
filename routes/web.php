@@ -34,5 +34,3 @@ Route::get('/dash', function () {
 Route::get('/products/create', function () {
     return view('examen.products.create');
 })->name('products.create');
-
-Route::post('/api/products', [ProductController::class, 'store']);
