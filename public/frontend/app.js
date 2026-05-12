@@ -1,23 +1,44 @@
-let table_cars = document.getElementById('table_cars');
+const API_URL = '/api';
 
-fetch('http://127.0.0.1:8000/api/cars', {
-    method: 'GET',
-})
-.then(response => response.json())
-.then(data => {
-    console.log(data);
-
-    let container_cards = document.getElementsByClassName('cards')[0];
+document.addEventListener('DOMContentLoaded', () => {
+    const user = JSON.parse(localStorage.getItem('user'));
     
-    data.forEach(car => {
-        let card = document.createElement('div');
-        card.classList.add('card');
-        card.innerHTML = `${car.brand} ${car.model} <br> ${car.remolque.model}`;
-        container_cards.appendChild(card);
+    if (!user) {
+        window.location.href = '/login';
+        return;
+    }
+    
+    document.getElementById('user-name').textContent = user.name;
+    document.getElementById('user-role').textContent = user.role;
+    document.getElementById('user-info').style.display = 'inline';
+    document.getElementById('logout-btn').style.display = 'inline';
+    
+    loadCars();
+});
+
+function loadCars() {
+    fetch(`${API_URL}/cars`, {
+        method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+
+        let container_cards = document.getElementsByClassName('cards')[0];
+        
+        data.forEach(car => {
+            let card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `${car.brand} ${car.model} <br> ${car.remolque.model}`;
+            container_cards.appendChild(card);
+        });
+    })
+    .catch(err => {
+        console.log(`ERROR: ${err}`);
     });
-    
-    
-})
-.catch(err => {
-    console.log(`ERROR: ${err}`);
-})
+}
+
+function logout() {
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+}

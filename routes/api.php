@@ -11,6 +11,8 @@ Route::middleware('cors')->group(function () {
     Route::post('/users', [UserController::class, 'store']);
     Route::put('/users/{id}', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
+    
+    Route::post('/login', [UserController::class, 'login']);
 
     Route::get('/cars', [CarController::class, 'index']);
     Route::get('/cars/{id}', [CarController::class, 'show']);
