@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Models\User;
+
 
 Route::get('/', function () {
     if (session('user_id')) {
@@ -20,7 +22,7 @@ Route::get('/login', function () {
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/dash', function () {
-    $user = \App\Models\User::find(session('user_id'));
+    $user = User::find(session('user_id'));
     return view('examen.dash', ['user' => $user]);
 })->name('dash')->middleware('role:admin');
 

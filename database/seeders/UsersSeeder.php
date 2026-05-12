@@ -26,21 +26,10 @@ class UsersSeeder extends Seeder
                 'password' => '1234',
                 'role' => 'test',
             ],
-            [
-                'name' => 'Maria',
-                'last_name' => 'López',
-                'age' => 28,
-                'email' => 'maria@email.com',
-                'password' => '1234',
-                'role' => 'admin',
-            ],
         ];
 
         foreach ($users as $userData) {
-            User::updateOrCreate(
-                ['email' => $userData['email']],
-                $userData
-            );
+            User::create($userData);
         }
     }
 }

@@ -13,12 +13,8 @@ class LoginController extends Controller
                     ->where('password', $request->password)
                     ->first();
         
-        if (!$user) {
+        if (!$user || $user->role !== 'admin') {
             return redirect('/login')->with('error', 'Credenciales inválidas');
-        }
-        
-        if ($user->role !== 'admin') {
-            return redirect('/login')->with('error', 'No tienes permisos');
         }
         
         session(['user_id' => $user->id]);

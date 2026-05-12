@@ -34,16 +34,13 @@ class CarsSeeder extends Seeder
                 'year' => 2020,
                 'color' => 'Blanco',
                 'license_plate' => '9012GHI',
-                'user_id' => 3,
+                'user_id' => 2,
                 'remolque_id' => 3,
             ],
         ];
 
         foreach ($cars as $carData) {
-            Car::updateOrCreate(
-                ['license_plate' => $carData['license_plate']],
-                $carData
-            );
+            Car::create($carData);
         }
     }
 }

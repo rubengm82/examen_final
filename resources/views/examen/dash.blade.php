@@ -9,7 +9,7 @@
 <body>
     <div class="main">
         <div class="header">
-            HEADER
+            <div>HEADER</div>
             <div class="header-right">
                 <span>{{ $user->name ?? '' }} ({{ $user->role ?? '' }})</span>
                 <a href="/logout"><button class="logout-btn">Salir</button></a>
