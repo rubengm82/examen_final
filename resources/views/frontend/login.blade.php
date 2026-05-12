@@ -20,6 +20,12 @@
     <script>
         const API_URL = '/api';
 
+        // Si ya está logeado, redirigir a dash
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            window.location.href = '/dash?user_id=' + user.id;
+        }
+
         function login() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -35,6 +41,9 @@
             .then(data => {
                 if (data.error) {
                     errorEl.textContent = data.error;
+                    errorEl.style.display = 'block';
+                } else if (data.role !== 'admin') {
+                    errorEl.textContent = 'No tienes permisos para acceder';
                     errorEl.style.display = 'block';
                 } else {
                     localStorage.setItem('user', JSON.stringify(data));
