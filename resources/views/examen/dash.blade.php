@@ -16,10 +16,17 @@
             </div>
         </div>
         <div class="sidebar">SIDEBAR</div>
+        
         <div class="cards"></div>
+
+        {{-- Asi solo lo veria role admin, mira de poner el js dentro del if --}}
+        {{-- @if($user->role === 'admin')
+            @vite('resources/js/app_examen_dash.js')
+        @endif --}}
+
         <div class="footer">FOOTER</div>
     </div>
-
-    @vite('resources/js/app_examen_dash.js')
+{{-- Comentalo si ves que las cards van por role vigilando lo de arriba --}}
+@vite('resources/js/app_examen_dash.js')
 </body>
 </html>
