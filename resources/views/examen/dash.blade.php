@@ -15,11 +15,17 @@
                 <a href="/logout"><button class="logout-btn">Salir</button></a>
             </div>
         </div>
-        <div class="sidebar">
-            <a href="/products/create"><button>Crear nuevo producto</button></a>
-            <a href="/products/edit/1"><button>Editar producto</button></a>
-            <a href="/products/delete"><button>Borrar producto</button></a>
-        </div>
+
+        @if ($user->role === 'admin')
+             <div class="sidebar">
+                <a href="/products/create"><button>Crear nuevo producto</button></a>
+                <a href="/products/edit/1"><button>Editar producto</button></a>
+                <a href="/products/delete"><button>Borrar producto</button></a>
+            </div>
+        @else
+             <div class="sidebar">
+            </div>
+        @endif
         
         <div class="content"></div>
 
