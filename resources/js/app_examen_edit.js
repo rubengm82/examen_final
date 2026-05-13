@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnLoad.addEventListener('click', () => {
         const productId = productIdInput.value;
 
-        fetch(`/api/products/${productId}`)
+        fetch(`/api/proyectos/${productId}`)
             .then(res => res.json())
             .then(product => {
                 brandInput.value = product.brand || '';
@@ -23,17 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // if (!loadedProductId) {
-        //     alert('Primero carga un producto válido');
-        //     return;
-        // }
-
         const data = {
             brand: brandInput.value,
             model: modelInput.value
         };
 
-        fetch(`/api/products/${loadedProductId}`, {
+        fetch(`/api/proyectos/${loadedProductId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

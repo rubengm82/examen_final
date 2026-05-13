@@ -18,9 +18,9 @@
 
         @if ($user->role === 'admin')
              <div class="sidebar">
-                <a href="/products/create"><button>Crear nuevo producto</button></a>
-                <a href="/products/edit/1"><button>Editar producto</button></a>
-                <a href="/products/delete"><button>Borrar producto</button></a>
+                <a href="/proyectos/create"><button>Crear nuevo producto</button></a>
+                <a href="/proyectos/edit/1"><button>Editar producto</button></a>
+                <a href="/proyectos/delete"><button>Borrar producto</button></a>
             </div>
         @else
              <div class="sidebar">

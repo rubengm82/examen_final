@@ -19,7 +19,7 @@ header {
   color: white;
   grid-area: header;
   display: flex;
-  justify-content: center;
+  justify-content:space-around;
   align-items: center;
   font-size: clamp(.75rem, 1.5vw, 2rem);
 }

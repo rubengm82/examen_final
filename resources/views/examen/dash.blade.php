@@ -9,20 +9,30 @@
 <body>
     <header>
         <h1>GESTOR DELS MEUS PROJECTES</h1>
+        <div class="header-right">
+            <span>{{ $user->name ?? '' }} ({{ $user->role ?? '' }})</span>
+            <a href="/logout"><button class="logout-btn">Salir</button></a>
+        </div>
     </header>
 
     <main class="layout">
 
         <aside class="sidebar">
             <h2>Llistat del meus projectes</h2>
-            <p>Projecte 1</p>
+            {{-- <p>Projecte 1</p>
             <p>Projecte 2</p>
             <p>Projecte 3</p>
-            <p>Projecte 4</p>
+            <p>Projecte 4</p> --}}
+            <div class="proyectos-sidebar"></div>
+            <a href="/proyectos/create"><button>Crear nuevo producto</button></a>
+            <a href="/proyectos/edit/1"><button>Editar producto</button></a>
+            <a href="/proyectos/delete"><button>Borrar producto</button></a>
+
         </aside>
 
         <article class="featured">
-            Projecte 1: És el projecte més nou 
+            {{-- Projecte 1: És el projecte més nou  --}}
+            <div class="proyectos-featured"></div>
         </article>
 
         <section class="news">
