@@ -18,7 +18,7 @@
         <div class="form-container">
             <h2>Borrar Proyecto</h2>
             <form id="form-delete">
-                <input type="number" id="proyecto-id" placeholder="ID del producto" min="1" required>
+                <input type="number" id="proyecto-id" placeholder="ID del proyecto" min="1" required>
                 <br><br>
                 <button type="submit" class="delete-btn">Borrar</button>
                 <a href="/dash"><button type="button">Cancelar</button></a>
