@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 proyecto_link.style.display='block';
                 container_proyectos_sidebar.appendChild(proyecto_link);
 
-                container_proyectos_featured.innerHTML = `${proyecto.nombre} ${proyecto.descripcion} `;
+                container_proyectos_featured.innerHTML = `${proyecto.nombre} <br> Fecha Desc: ${proyecto.descripcion} <br> Fecha Inicio: ${proyecto.fecha_inicio} <br> Fecha Fin: ${proyecto.fecha_fin}`;
             });
         })
         .catch(err => console.log('ERROR: ' + err));

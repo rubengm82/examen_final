@@ -10,7 +10,7 @@ class ProyectoController extends Controller
 {
     public function index(): JsonResponse
     {
-        return response()->json(Proyecto::with('user')->get());
+        return response()->json(Proyecto::with('user')->orderBy('id','desc')->get());
     }
 
     public function store(Request $request): JsonResponse

@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const productId = document.getElementById('product-id').value;
+        const proyectoId = document.getElementById('proyecto-id').value;
 
-        fetch(`/api/products/${productId}`, {
+        fetch(`/api/proyectos/${proyectoId}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         })
