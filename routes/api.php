@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProyectoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['cors'])->group(function () {
@@ -11,9 +11,9 @@ Route::middleware(['cors'])->group(function () {
     Route::put('/users/{id}', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
-    Route::get('/products', [ProductController::class, 'index']);
-    Route::get('/products/{id}', [ProductController::class, 'show']);
-    Route::post('/products', [ProductController::class, 'store']);
-    Route::put('/products/{id}', [ProductController::class, 'update']);
-    Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+    Route::get('/proyectos', [ProyectoController::class, 'index']);
+    Route::get('/proyectos/{id}', [ProyectoController::class, 'show']);
+    Route::post('/proyectos', [ProyectoController::class, 'store']);
+    Route::put('/proyectos/{id}', [ProyectoController::class, 'update']);
+    Route::delete('/proyectos/{id}', [ProyectoController::class, 'destroy']);
 });

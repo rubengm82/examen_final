@@ -32,14 +32,14 @@ Route::get('/dash', function () {
     return view('examen.dash', ['user' => $user]);
 })->name('dash');
 
-Route::get('/products/create', function () {
-    return view('examen.products.create');
-})->name('products.create');
+Route::get('/proyectos/create', function () {
+    return view('examen.proyectos.create');
+})->name('proyectos.create');
 
-Route::get('/products/edit/{id}', function ($id) {
-    return view('examen.products.edit', ['productId' => $id]);
-})->name('products.edit');
+Route::get('/proyectos/edit/{id}', function ($id) {
+    return view('examen.proyectos.edit', ['productId' => $id]);
+})->name('proyectos.edit');
 
-Route::get('/products/delete', function () {
-    return view('examen.products.delete');
-})->name('products.delete');
+Route::get('/proyectos/delete', function () {
+    return view('examen.proyectos.delete');
+})->name('proyectos.delete');

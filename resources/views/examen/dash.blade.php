@@ -7,36 +7,39 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div class="main">
-        <div class="header">
-            <div>HEADER</div>
-            <div class="header-right">
-                <span>{{ $user->name ?? '' }} ({{ $user->role ?? '' }})</span>
-                <a href="/logout"><button class="logout-btn">Salir</button></a>
-            </div>
-        </div>
+    <header>
+        <h1>GESTOR DELS MEUS PROJECTES</h1>
+    </header>
 
-        @if ($user->role === 'admin')
-             <div class="sidebar">
-                <a href="/products/create"><button>Crear nuevo producto</button></a>
-                <a href="/products/edit/1"><button>Editar producto</button></a>
-                <a href="/products/delete"><button>Borrar producto</button></a>
-            </div>
-        @else
-             <div class="sidebar">
-            </div>
-        @endif
-        
-        <div class="content"></div>
+    <main class="layout">
 
-        {{-- Asi solo lo veria role admin, mira de poner el js dentro del if --}}
-        {{-- @if($user->role === 'admin')
-            @vite('resources/js/app_examen_dash.js')
-        @endif --}}
+        <aside class="sidebar">
+            <h2>Llistat del meus projectes</h2>
+            <p>Projecte 1</p>
+            <p>Projecte 2</p>
+            <p>Projecte 3</p>
+            <p>Projecte 4</p>
+        </aside>
 
-        <div class="footer">FOOTER</div>
-    </div>
-{{-- Comentalo si ves que las cards van por role vigilando lo de arriba --}}
+        <article class="featured">
+            Projecte 1: És el projecte més nou 
+        </article>
+
+        <section class="news">
+            <article class="card">Tasca 1 del projecte seleccionat </article>
+            <article class="card">Tasca 2 del projecte seleccionat</article>
+            <article class="card">Tasca 3 del projecte seleccionat</article>
+            <article class="card">Tasca 4 del projecte seleccionat</article>
+            <article class="card">Tasca 5 del projecte seleccionat</article>
+            <article class="card">Tasca 6 del projecte seleccionat </article>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Examen DAW - Layout Responsive sense media queries</p>
+    </footer>
+
 @vite('resources/js/app_examen_dash.js')
 </body>
 </html>

@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Proyecto extends Model
 {
     protected $fillable = [
-        'brand',
-        'model',
+        'nombre',
+        'descripcion',
+        'fecha_inicio',
+        'fecha_fin',
         'user_id'
     ];
 
