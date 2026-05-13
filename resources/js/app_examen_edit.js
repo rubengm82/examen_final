@@ -34,9 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             fecha_fin: fechaFinInput.value,
         };
         
-        console.log(data);
-        
-
         fetch(`/api/proyectos/${loadedProyectoId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
